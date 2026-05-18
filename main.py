@@ -1,31 +1,16 @@
-from src.models.passenger_car import PassengerCar
-from src.models.rental_company import RentalCompany
+from src.data import create_initial_rental_company
 from src.services.rental_service import RentalService
 
 
 def main():
-    rental_company = RentalCompany("Benyesz Autókölcsönző")
-
-    car = PassengerCar("PHY-060", "Opeal Corsa", 120000, 5)
-
-    rental_company.add_vehicle(car)
-
+    rental_company = create_initial_rental_company()
     rental_service = RentalService(rental_company)
 
-    try:
+    print(rental_company)
 
-        price = rental_service.rent_vehicle(car, "2026-05-20", "John Don")
-
-        print(f"Successfull rental! Price: {price} Ft")
-
-        message = rental_service.cancel_rental(car, "2026-05-20")
-        print(message)
-
-        message = rental_service.cancel_rental(car, "2026-05-20")
-        print(message)
-
-    except Exception as ex:
-        print(ex)
+    print("\nInitial rentals:")
+    for rental in rental_service.list_rentals():
+        print(rental)
 
 
 if __name__ == "__main__":
