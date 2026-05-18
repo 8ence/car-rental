@@ -1,5 +1,6 @@
 from abc import ABC
 
+
 class Vehicle(ABC):
 
     def __init__(self, registration_number, model, daily_price):

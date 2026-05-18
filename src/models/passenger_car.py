@@ -1,5 +1,6 @@
 from src.models.vehicle import Vehicle
 
+
 class PassengerCar(Vehicle):
 
     def __init__(self, registration_number, model, daily_price, seat_count):
