@@ -1,0 +1,36 @@
+from src.models.rental import Rental
+
+
+class RentalService:
+
+    def __init__(self, rental_company):
+        self.__rental_company = rental_company
+
+    def rent_vehicle(self, vehicle, date, renter):
+
+        for rental in self.__rental_company.get_rentals():
+
+            if (
+                    rental.get_vehicle().get_registration_number() == vehicle.get_registration_number()
+                    and rental.get_date() == date
+            ):
+                raise Exception("Vehicle is already rented for this date!")
+
+        new_rental = Rental(vehicle, date, renter)
+
+        self.__rental_company.add_rental(new_rental)
+
+        return vehicle.get_daily_price()
+
+    def cancel_rental(self, vehicle, date):
+
+        for rental in self.__rental_company.get_rentals():
+
+            if (
+                    rental.get_vehicle().get_registration_number() == vehicle.get_registration_number()
+                    and rental.get_date() == date
+            ):
+                self.__rental_company.get_rentals().remove(rental)
+                return "Rental cancelled successfully!"
+
+        raise Exception("Rental not found!")
