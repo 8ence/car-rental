@@ -34,3 +34,11 @@ class RentalService:
                 return "Rental cancelled successfully!"
 
         raise Exception("Rental not found!")
+
+    def list_rentals(self):
+        rentals = self.__rental_company.get_rentals()
+
+        if len(rentals) == 0:
+            raise Exception("Rental not found!")
+
+        return rentals
