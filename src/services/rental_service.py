@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from src.models.rental import Rental
 
 
@@ -8,6 +10,7 @@ class RentalService:
 
     def rent_vehicle(self, vehicle, date, renter):
 
+        self.__validate_date(date)
         for rental in self.__rental_company.get_rentals():
 
             if (
@@ -24,6 +27,7 @@ class RentalService:
 
     def cancel_rental(self, vehicle, date):
 
+        self.__validate_date(date)
         for rental in self.__rental_company.get_rentals():
 
             if (
@@ -45,3 +49,8 @@ class RentalService:
 
 
     
+    def __validate_date(self, date):
+        try:
+            datetime.strptime(date, "%Y-%m-%d")
+        except ValueError:
+            raise Exception("Invalid date format! Use YYYY-MM-DD.")
