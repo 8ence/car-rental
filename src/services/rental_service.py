@@ -42,3 +42,6 @@ class RentalService:
             raise Exception("Rental not found!")
 
         return rentals
+
+
+    

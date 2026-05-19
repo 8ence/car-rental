@@ -1,4 +1,4 @@
-from src.data import create_initial_rental_company
+from src.data.seed_data import create_initial_rental_company
 from src.services.rental_service import RentalService
 from src.ui.console_ui import ConsoleUi
 

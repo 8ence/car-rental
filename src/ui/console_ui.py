@@ -39,7 +39,7 @@ class ConsoleUi:
             date = input("Enter date (YYYY-MM-DD): ")
             renter = input("Enter name: ")
 
-            vehicle = self.__find_vehicle_by_registration_number(registration_number )
+            vehicle = self.__find_vehicle_by_registration_number(registration_number.upper())
 
             price = self.__rental_service.rent_vehicle(vehicle, date, renter)
 
@@ -53,7 +53,7 @@ class ConsoleUi:
             registration_number = input("Enter registration number: ")
             date = input("Enter date (YYYY-MM-DD): ")
 
-            vehicle = self.__find_vehicle_by_registration_number(registration_number)
+            vehicle = self.__find_vehicle_by_registration_number(registration_number.upper())
 
             message = self.__rental_service.cancel_rental(vehicle, date)
 
