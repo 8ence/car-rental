@@ -47,6 +47,8 @@ class RentalService:
 
         return rentals
 
+
+    
     def __validate_date(self, date):
         try:
             datetime.strptime(date, "%Y-%m-%d")
